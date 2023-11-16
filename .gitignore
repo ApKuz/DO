@@ -1,0 +1,16 @@
+# available on DriveOhio github
+# Blue Route sample data
+Data/blueroute1export.json
+
+
+# Ignore all pycache files in nested folders
+*/__pycache__
+
+
+# Ignore jupyter dir, mostly for testing code implementation and viability
+# Never mind I will leave it in here for now
+# jupyter
+
+
+# ignore api-key, if any
+keys
