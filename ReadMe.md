@@ -4,18 +4,19 @@
 
 ### Data
 
-Dir 'Data/': contains the data used for the analysis
+Directory 'Data/': contains the data used for the analysis
 
 ### helper
 
-'Library' with helper functions relative to our goals
+Library with helper functions relative to our goals
 
 - to use the functions, add the following to your script:
-```
+```py
 import helper
 ```
 - to use the functions when helper is not in the same directory as your file, add the following to your script:
-```
+```py
+import sys
 sys.path.append('pathToHelperDir/..')
 ```
 

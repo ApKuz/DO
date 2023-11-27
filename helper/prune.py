@@ -3,7 +3,7 @@ import pandas as pd
 
 def pruneCols(dict: dict, colsTBD: list) -> dict:
     """Prunes the column names in a provided list, iff it exists in any dictionary entry.
-       Note, the first df will only delete the topic and size column
+       Note, the first df ('/tf') will only delete the topic and size column
 
     Args:
         dict (dict): Dictioinary of pd.Dataframes of drive ohio data split by topic

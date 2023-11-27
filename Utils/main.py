@@ -51,7 +51,7 @@ def main():
     # see '../helper/latLong'
     df = helper.extractLatLong(df)
     
-    fig = px.scatter_mapbox(df, lat='lat', lon='lon', color=fieldToPlot)
+    fig = px.scatter_mapbox(df, lat='lat', lon='lon', color=fieldToPlot, color_continuous_scale='viridis')
     fig.update_layout(mapbox_style="open-street-map")
     fig.show()
 
