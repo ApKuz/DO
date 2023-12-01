@@ -3,8 +3,6 @@
 
 import plotly.express as px
 import pandas as pd
-import numpy as np
-import utm
 import sys
 
 sys.path.append("../DO")
@@ -17,6 +15,8 @@ def main():
         _df = pd.read_json(f)
     
     df = _df
+
+    del _df
     
     # see '../helper/time.py'
     df = helper.timeField_to_timeStamp(df)
@@ -24,7 +24,7 @@ def main():
     # split df by topic, see '../helper/seperate.py' library
     dict = helper.dfByTopic(df)
 
-    # see '../helper/prune.py'
+    # prune the listed columns from all df it exists, see '../helper/prune.py'
     dict = helper.pruneCols(dict, ['index', 'timeField', 'topic', 'size', 'msg_type', 'metadataID', '_id', 'header', 'transforms'])
         
         
@@ -37,18 +37,19 @@ def main():
         else:
             mergedDF = pd.merge_asof(mergedDF, dict[value], on=['timeStamp'])
             
-    # sorting on timestamp
+    # sorting mergedDF on timestamp
     mergedDF['timeStamp'] = mergedDF['timeStamp'].sort_values()
 
     # fieldToPlot = 'brake'
     fieldToPlot = 'speedMps'
     # fieldToPlot = 'throttle'
+    # fieldToPlot = 'drivingMode'
 
     df = mergedDF
     df = df.dropna(subset=[fieldToPlot])
     df = df.reset_index()
     
-    # see '../helper/latLong'
+    # create and populate a new lat and lon column using the column 'transforms_x', see '../helper/latLong'
     df = helper.extractLatLong(df)
     
     fig = px.scatter_mapbox(df, lat='lat', lon='lon', color=fieldToPlot, color_continuous_scale='viridis')

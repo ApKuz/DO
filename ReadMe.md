@@ -6,6 +6,9 @@
 
 Directory 'Data/': contains the data used for the analysis
 
+- 'Data/blueroute1export.json': contains the data provided for the blue route
+  - This file is currently excluded from the repo due to size/I don't know if I can share it
+
 ### helper
 
 Library with helper functions relative to our goals
